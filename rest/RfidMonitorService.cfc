@@ -2,6 +2,7 @@
 
 component restpath='RfidMonitorService' rest='true'
 {
+    /* Include funtion to convert query RS to an array for JSON/Angular compatibility */
 
     cfinclude (template = './QueryToArray.cfm');
 
