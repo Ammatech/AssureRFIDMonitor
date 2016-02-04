@@ -1,0 +1,71 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Assure - RFID Monitor Maintenance (Angular2 - Beta 3)</h1>
+
+    <form (ngSubmit)="onSubmit()" #rfidMonitorForm="ngForm">
+      <div class="form-group">
+        <label for="hospital">Hospital</label>
+        <select class="form-control" required
+                (change) ="onGetRfidMonitor(hospital.value)"
+                [(ngModel)]="model.hospital"
+                ngControl="hospital" #hospital="ngForm" >
+          <option *ngFor="#hospital of hospitals" [value]="hospital.entity_id">{{hospital.entity_code}}</option>
+        </select>
+        <div [hidden]="hospital.valid" class="alert alert-danger">
+          Hospital is required
+        </div>
+      </div>
+
+      <button [hidden]="!submitted" type="submit" class="btn btn-default" [disabled]="!rfidMonitorForm.form.valid">Submit</button>
+    </form>
+
+    <button [hidden]="!submitted" (click)="onGetRfidMonitor()">Get RFID Monitors</button> <br>
+    <button [hidden]="!submitted" (click)="onGetHospital()">Get Hospitals</button> <br>
+
+  </div>
+
+
+  <div>
+      <br>
+
+      <h2>Existing RFID Monitors</h2>
+      <br>
+
+    <table border="1">
+      <thead>
+        <td>Code</td>
+        <td>Description</td>
+        <td>Entity</td>
+      </thead>
+    <tr *ngFor="#rfidMonitor of rfidMonitors">
+      <td>{{rfidMonitor.rfid_monitor_code}}</td>
+      <td>{{rfidMonitor.description}}</td>
+      <td>{{rfidMonitor.entity_id}}</td>
+    </tr>
+    </table>
+
+  </div>
+
+    <div [hidden]="!submitted">
+        <br>
+
+        <h2>Hospitals</h2>
+        <br>
+
+        <table border="1">
+            <thead>
+            <td>Code</td>
+            <td>Description</td>
+            <td>Entity</td>
+            </thead>
+            <tr *ngFor="#hospital of hospitals">
+                <td>{{hospital.entity_code}}</td>
+                <td>{{hospital.entity_description}}</td>
+                <td>{{hospital.entity_id}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
