@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<cross-domain-policy>
-    <site-control permitted-cross-domain-policies="master-only"/>
-    <allow-access-from domain="*.ammatech.com.au"/>
-    <allow-access-from domain="http://localhost:63342"/>
-    <allow-http-request-headers-from domain="*.ammatech.com.au" headers="SOAPAction"/>
-    <allow-http-request-headers-from domain="http://localhost:63342" headers="SOAPAction"/>
-</cross-domain-policy>

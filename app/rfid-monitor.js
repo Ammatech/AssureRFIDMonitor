@@ -4,8 +4,8 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             RfidMonitor = (function () {
-                function RfidMonitor(id, rfidMonitorCode, description, entityId) {
-                    this.id = id;
+                function RfidMonitor(rfidMonitorId, rfidMonitorCode, description, entityId) {
+                    this.rfidMonitorId = rfidMonitorId;
                     this.rfidMonitorCode = rfidMonitorCode;
                     this.description = description;
                     this.entityId = entityId;

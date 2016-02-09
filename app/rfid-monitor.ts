@@ -1,7 +1,7 @@
 export class RfidMonitor {
 
   constructor(
-    public id: number,
+    public rfidMonitorId: number,
     public rfidMonitorCode: string,
     public description: string,
     public entityId?: number

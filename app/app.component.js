@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero-form.component'], function(exports_1) {
+System.register(['angular2/core', './rfid-monitor-form.component.ts'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,15 @@ System.register(['angular2/core', './hero-form.component'], function(exports_1) 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_form_component_1;
+    var core_1, rfid_monitor_form_component_ts_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (hero_form_component_1_1) {
-                hero_form_component_1 = hero_form_component_1_1;
+            function (rfid_monitor_form_component_ts_1_1) {
+                rfid_monitor_form_component_ts_1 = rfid_monitor_form_component_ts_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -25,8 +25,8 @@ System.register(['angular2/core', './hero-form.component'], function(exports_1) 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<hero-form></hero-form>',
-                        directives: [hero_form_component_1.HeroFormComponent]
+                        template: '<rfid-monitor-form></rfid-monitor-form>',
+                        directives: [rfid_monitor_form_component_ts_1.RfidMonitorFormComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

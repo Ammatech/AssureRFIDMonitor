@@ -1,10 +1,10 @@
 import {Component}         from 'angular2/core';
-import {HeroFormComponent} from './hero-form.component'
+import {RfidMonitorFormComponent} from './rfid-monitor-form.component.ts'
 
 @Component({
   selector: 'my-app',
-  template: '<hero-form></hero-form>',
-  directives: [HeroFormComponent]
+  template: '<rfid-monitor-form></rfid-monitor-form>',
+  directives: [RfidMonitorFormComponent]
 })
 export class AppComponent { }
 
