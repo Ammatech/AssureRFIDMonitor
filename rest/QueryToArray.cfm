@@ -19,4 +19,14 @@
         }
         return(queryArray);
     }
+
+    public string function writeDumpToText( required any input ) {
+        // Write the dump to an output buffer.
+        savecontent variable="local.result" {
+            writeDump( var = input, format = "text" );
+        }
+        result = reReplaceNoCase( result, "^<pre>|</pre>\s*$", "", "all" );
+        return( result );
+    }
+
 </cfscript>

@@ -23,10 +23,7 @@ component restpath='RfidMonitorService' rest='true'
 
     }
 
-//remote function updateRfidMonitor(numeric rfidMonitorId restargsource='form' ,
-//                                  string rfidMonitorCode restargsource='form',
-//                                  string description restargsource='form') httpmethod='post' returnType='string' returnFormat='json' produces='application/json'
-    remote function updateRfidMonitor() httpmethod='post' returnType='string' returnFormat='json' produces='application/json'
+    remote function updateRfidMonitor() httpmethod='post' returnType='array' returnFormat='json' produces='application/json'
     {
 
         requestBody = toString( getHttpRequestData().content );
@@ -34,32 +31,30 @@ component restpath='RfidMonitorService' rest='true'
             structAppend( form, deserializeJson( requestBody ) );
         }
 
-        test = 'rfidMonitorId : ' & rfidMonitorId;
-
-        resultForm = 'Form = ' & writeDumpToText(form);
-        requestBody = 'requestBody = ' & writeDumpToText(requestBody);
-
-        resultArgument = ' Arguments = ' & writeDumpToText(arguments);
-
-        result = requestBody & chr(13) & chr(13) &
-        resultForm & chr(13) & chr(13) &
-        resultArgument & chr(13) & chr(13) &
-        test;
-
-        return result;
-
-    }
-
-    public string function writeDumpToText( required any input ) {
-// Write the dump to an output buffer.
-        savecontent variable="local.result" {
-            writeDump( var = input, format = "text" );
+        // Determine if insert or update
+        if (rfidMonitorId == 0){
+            result =  new StoredProc(
+                procedure        = "p_insert_rfid_monitor",
+                datasource        = "SVP_PJMAssure_Development",
+                parameters        = [{dbvarname="@rfid_monitor_code", value=rfidMonitorCode, cfsqltype="CF_SQL_VARCHAR"},
+                                     {dbvarname="@description", value=description, cfsqltype="CF_SQL_VARCHAR"},
+                                     {dbvarname="@entity_id", value=entityId, cfsqltype="CF_SQL_INTEGER"}],
+                procResults        = [{resultset=1, name="resultRfidMonitor"}]).execute();
         }
-// When you dump to a text output, it wraps the output in PRE tags. We can
-// strip those out and defer to the calling context to add them back in if
-// necessary.
-        result = reReplaceNoCase( result, "^<pre>|</pre>\s*$", "", "all" );
-        return( result );
+        else
+        {
+            result =  new StoredProc(
+                procedure        = "p_update_rfid_monitor",
+                datasource        = "SVP_PJMAssure_Development",
+                parameters        = [{dbvarname="@rfid_monitor_id", value=rfidMonitorId, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@rfid_monitor_code", value=rfidMonitorCode, cfsqltype="CF_SQL_VARCHAR"},
+                                     {dbvarname="@description", value=description, cfsqltype="CF_SQL_VARCHAR"}],
+                procResults        = [{resultset=1, name="resultRfidMonitor"}]).execute();
+        }
+
+        return queryToArray(result.getProcResultSets().resultRfidMonitor);
+
     }
+
 }
 
