@@ -4,11 +4,11 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             RfidMonitor = (function () {
-                function RfidMonitor(rfidMonitorId, rfidMonitorCode, description, entityId) {
-                    this.rfidMonitorId = rfidMonitorId;
-                    this.rfidMonitorCode = rfidMonitorCode;
+                function RfidMonitor(rfid_monitor_id, rfid_monitor_code, description, entity_id) {
+                    this.rfid_monitor_id = rfid_monitor_id;
+                    this.rfid_monitor_code = rfid_monitor_code;
                     this.description = description;
-                    this.entityId = entityId;
+                    this.entity_id = entity_id;
                 }
                 return RfidMonitor;
             })();

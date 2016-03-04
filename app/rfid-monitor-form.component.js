@@ -25,11 +25,11 @@ System.register(['angular2/core', './rfid-monitor', "./rfid-monitor.service"], f
             RfidMonitorFormComponent = (function () {
                 function RfidMonitorFormComponent(_httpService) {
                     this._httpService = _httpService;
-                    this.model = new rfid_monitor_1.RfidMonitor(0, '', '', 0);
                     this.rfidMonitors = [];
                     this.hospitals = [];
                     this.submitted = false;
-                    this.hospitalSelect = false;
+                    //hospitalSelect = false;
+                    this.editMode = '';
                 }
                 RfidMonitorFormComponent.prototype.ngOnInit = function () {
                     this.onGetHospital();
@@ -55,12 +55,26 @@ System.register(['angular2/core', './rfid-monitor', "./rfid-monitor.service"], f
                 RfidMonitorFormComponent.prototype.onSubmit = function () {
                     var _this = this;
                     this.submitted = true;
-                    console.log(JSON.stringify(this.model));
-                    this._httpService.updateRfidMonitor(this.model)
-                        .subscribe(function (data) { return _this.onGetRfidMonitor(_this.model.entityId); }, //JSON.stringify(data),
+                    console.log(JSON.stringify(this.selectedRfidMonitor));
+                    this._httpService.updateRfidMonitor(this.selectedRfidMonitor)
+                        .subscribe(function (data) {
+                        _this.editMode = '';
+                        _this.onGetRfidMonitor(_this.selectedRfidMonitor.entity_id);
+                    }, //JSON.stringify(data),
                     function (//JSON.stringify(data),
                         error) { return console.log(error); }, //alert(error.toString()),
                     function () { return console.log('updateRFIDMonitor Finished'); });
+                };
+                RfidMonitorFormComponent.prototype.onNewMonitor = function (entityId) {
+                    this.selectedRfidMonitor = new rfid_monitor_1.RfidMonitor(0, '', '', entityId);
+                    this.editMode = 'insert';
+                };
+                RfidMonitorFormComponent.prototype.onSelect = function (rfidMonitor) {
+                    this.selectedRfidMonitor = rfidMonitor;
+                    this.editMode = 'update';
+                };
+                RfidMonitorFormComponent.prototype.onCancel = function () {
+                    this.editMode = '';
                 };
                 RfidMonitorFormComponent = __decorate([
                     core_1.Component({

@@ -1,10 +1,10 @@
 export class RfidMonitor {
 
   constructor(
-    public rfidMonitorId: number,
-    public rfidMonitorCode: string,
+    public rfid_monitor_id: number,
+    public rfid_monitor_code: string,
     public description: string,
-    public entityId?: number
+    public entity_id?: number
   ) {  }
 
 }

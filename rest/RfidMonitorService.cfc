@@ -32,13 +32,13 @@ component restpath='RfidMonitorService' rest='true'
         }
 
         // Determine if insert or update
-        if (rfidMonitorId == 0){
+        if (rfid_monitor_id == 0){
             result =  new StoredProc(
                 procedure        = "p_insert_rfid_monitor",
                 datasource        = "SVP_PJMAssure_Development",
-                parameters        = [{dbvarname="@rfid_monitor_code", value=rfidMonitorCode, cfsqltype="CF_SQL_VARCHAR"},
+                parameters        = [{dbvarname="@rfid_monitor_code", value=rfid_monitor_code, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@description", value=description, cfsqltype="CF_SQL_VARCHAR"},
-                                     {dbvarname="@entity_id", value=entityId, cfsqltype="CF_SQL_INTEGER"}],
+                                     {dbvarname="@entity_id", value=entity_id, cfsqltype="CF_SQL_INTEGER"}],
                 procResults        = [{resultset=1, name="resultRfidMonitor"}]).execute();
         }
         else
@@ -46,8 +46,8 @@ component restpath='RfidMonitorService' rest='true'
             result =  new StoredProc(
                 procedure        = "p_update_rfid_monitor",
                 datasource        = "SVP_PJMAssure_Development",
-                parameters        = [{dbvarname="@rfid_monitor_id", value=rfidMonitorId, cfsqltype="CF_SQL_INTEGER"},
-                                     {dbvarname="@rfid_monitor_code", value=rfidMonitorCode, cfsqltype="CF_SQL_VARCHAR"},
+                parameters        = [{dbvarname="@rfid_monitor_id", value=rfid_monitor_id, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@rfid_monitor_code", value=rfid_monitor_code, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@description", value=description, cfsqltype="CF_SQL_VARCHAR"}],
                 procResults        = [{resultset=1, name="resultRfidMonitor"}]).execute();
         }

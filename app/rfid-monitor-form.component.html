@@ -1,58 +1,69 @@
 <div class="container">
-    <div>
-        <h1>Assure - RFID Monitor Maintenance</h1>
+        <h1>Assure</h1>
+        <h2>RFID Monitor Maintenance</h2>
 
-        <form (ngSubmit)="onSubmit()" #rfidMonitorForm="ngForm">
+        <form #hospital="ngForm">
+
             <div class="form-group">
                 <label for="hospital">Hospital</label>
                 <select class="form-control" required
                         (change)="onGetRfidMonitor(hospital.value)"
-                        [(ngModel)]="model.entityId"
+
                         ngControl="hospital" #hospital="ngForm">
                     <option *ngFor="#hospital of hospitals" [value]="hospital.entity_id">{{hospital.entity_code}}
                     </option>
                 </select>
-                <div [hidden]="hospital.valid" class="alert alert-danger">
+                <div [hidden]="hospital.value" class="alert alert-danger">
                     Please select a Hospital
                 </div>
             </div>
-            <br><br>
-            <div>
-                <label for="code" [hidden]="!hospitalSelect">Monitor Code: </label>
-                <input [(ngModel)]="model.rfidMonitorCode" placeholder="Code" [hidden]="!hospitalSelect">
-            </div>
-            <div>
-                <label for="description" [hidden]="!hospitalSelect">Description: </label>
-                <input [(ngModel)]="model.description" placeholder="Description" [hidden]="!hospitalSelect">
-            </div>
-
-            <button type="submit" class="btn btn-default" [hidden]="!hospitalSelect"
-                    [disabled]="!rfidMonitorForm.form.valid">Submit
-            </button>
         </form>
 
+            <br><br>
 
-    </div>
 
 
-    <div [hidden]="!rfidMonitorForm.form.valid">
+    <div [hidden]="!hospitalSelect">
         <br>
 
-        <h2>Existing RFID Monitors</h2>
+        <div *ngIf="selectedRfidMonitor && editMode">
+            <form (ngSubmit)="onSubmit()" #rfidMonitorForm="ngForm">
+
+                <div hidden><label>rfid_monitor_id: </label>{{selectedRfidMonitor.rfid_monitor_id}}</div>
+                <div hidden><label>entity id: </label>{{selectedRfidMonitor.entity_id}}</div>
+
+                <div *ngIf="editMode == 'insert'"><h2>Create new RFID Monitor</h2></div>
+                <div *ngIf="editMode == 'update'"><h2>Edit existing RFID Monitor</h2></div>
+
+                <div class="items">
+                    <label class="badge" for="code" [hidden]="!hospitalSelect">Monitor Code</label>
+                    <input name="code"  [(ngModel)]="selectedRfidMonitor.rfid_monitor_code" placeholder="Monitor Code" [hidden]="!hospitalSelect" required>
+                </div>
+                <div class="items">
+                    <label class="badge" for="description" [hidden]="!hospitalSelect">Description</label>
+                    <input name="description"  [(ngModel)]="selectedRfidMonitor.description" placeholder="Description" [hidden]="!hospitalSelect" required>
+                </div>
+
+                <button type="submit" class="btn btn-default"
+                        [disabled]="!rfidMonitorForm.form.valid">Save
+                </button>
+                <button class="btn btn-default"
+                        (click) = "onCancel()">Cancel
+                </button>
+            </form>
+        </div>
+
+        <h2>Existing RFID Monitors</h2><button (click) = "onNewMonitor(hospital.value)" name="newMonitor">Create New</button>
         <br>
 
-        <table border="1">
-            <thead>
-            <td>Code</td>
-            <td>Description</td>
-            <td>Entity</td>
-            </thead>
-            <tr *ngFor="#rfidMonitor of rfidMonitors">
-                <td>{{rfidMonitor.rfid_monitor_code}}</td>
-                <td>{{rfidMonitor.description}}</td>
-                <td>{{rfidMonitor.entity_id}}</td>
-            </tr>
-        </table>
+        <ul class="items">
+            <li *ngFor="#rfidMonitor of rfidMonitors"
+                [class.selected]="rfidMonitor === selectedRfidMonitor"
+                (click)="onSelect(rfidMonitor)">
+                <span class="badge" >{{rfidMonitor.rfid_monitor_code}}</span> {{rfidMonitor.description}}
+            </li>
+        </ul>
+
 
     </div>
 

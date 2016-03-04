@@ -11,15 +11,14 @@ import {OnInit} from "angular2/core";
 })
 export class RfidMonitorFormComponent implements OnInit {
 
+    model = new RfidMonitor(0,'','',0);
+
     rfidMonitors = [];
     hospitals = [];
 
     submitted = false;
-    //hospitalSelect = false;
-    editMode:string = '';
 
-    selectedRfidMonitor: RfidMonitor;
-
+    hospitalSelect = false;
 
     ngOnInit() {
         this.onGetHospital();
@@ -29,7 +28,7 @@ export class RfidMonitorFormComponent implements OnInit {
 
     }
 
-    onGetRfidMonitor(entityId: number) {
+    onGetRfidMonitor(entityId) {
 
         console.log('entityId is ' + entityId.toString());
         this.hospitalSelect = true;
@@ -52,32 +51,15 @@ export class RfidMonitorFormComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        console.log(JSON.stringify(this.selectedRfidMonitor));
+        console.log(JSON.stringify(this.model));
 
-        this._httpService.updateRfidMonitor(this.selectedRfidMonitor)
+        this._httpService.updateRfidMonitor(this.model)
             .subscribe(
-                data => {
-                    this.editMode = '';
-                    this.onGetRfidMonitor(this.selectedRfidMonitor.entity_id)}, //JSON.stringify(data),
+                data => this.onGetRfidMonitor(this.model.entityId), //JSON.stringify(data),
                 error => console.log(error), //alert(error.toString()),
                 () => console.log('updateRFIDMonitor Finished')
             )
-    }
 
-    onNewMonitor(entityId: number) {
-            this.selectedRfidMonitor = new RfidMonitor(0,'','',entityId);
-            this.editMode = 'insert';
 
     }
-
-    onSelect(rfidMonitor: RfidMonitor) {
-        this.selectedRfidMonitor = rfidMonitor;
-        this.editMode = 'update';
-
-    }
-
-    onCancel(){
-        this.editMode = '';
-    }
-
 }

@@ -12,9 +12,9 @@ component restpath='EntityService' rest='true'
     {
 
         result =  new StoredProc(
-            procedure        = "p_search_entity",
+            procedure        = "p_get_entity",
             datasource        = "SVP_PJMAssure_Development",
-            parameters        = [{dbvarname="@entity_type_id", value="2", cfsqltype="CF_SQL_INTEGER"}],
+            parameters        = [{dbvarname="@entity_type_code", value="Hospital", cfsqltype="CF_SQL_VARCHAR"}],
             procResults        = [{resultset=1, name="resultHospital"}]).execute();
 
         return queryToArray(result.getProcResultSets().resultHospital);
