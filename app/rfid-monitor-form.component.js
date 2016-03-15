@@ -28,7 +28,7 @@ System.register(['angular2/core', './rfid-monitor', "./rfid-monitor.service"], f
                     this.rfidMonitors = [];
                     this.hospitals = [];
                     this.submitted = false;
-                    //hospitalSelect = false;
+                    this.hospitalSelect = false;
                     this.editMode = '';
                 }
                 RfidMonitorFormComponent.prototype.ngOnInit = function () {
@@ -64,6 +64,7 @@ System.register(['angular2/core', './rfid-monitor', "./rfid-monitor.service"], f
                     function (//JSON.stringify(data),
                         error) { return console.log(error); }, //alert(error.toString()),
                     function () { return console.log('updateRFIDMonitor Finished'); });
+                    this._httpService(s);
                 };
                 RfidMonitorFormComponent.prototype.onNewMonitor = function (entityId) {
                     this.selectedRfidMonitor = new rfid_monitor_1.RfidMonitor(0, '', '', entityId);
@@ -73,7 +74,8 @@ System.register(['angular2/core', './rfid-monitor', "./rfid-monitor.service"], f
                     this.selectedRfidMonitor = rfidMonitor;
                     this.editMode = 'update';
                 };
-                RfidMonitorFormComponent.prototype.onCancel = function () {
+                RfidMonitorFormComponent.prototype.onCancelMonitorEdit = function () {
+                    //this.selectedRfidMonitor = new RfidMonitor(0,'','',0);
                     this.editMode = '';
                 };
                 RfidMonitorFormComponent = __decorate([

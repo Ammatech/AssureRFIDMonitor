@@ -37,9 +37,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "ang
                     var requestOptions = new http_3.RequestOptions();
                     requestOptions.headers = headers;
                     var url = this.urlRfidMonitorService + '/' + entityId;
-                    //console.log(url);
+                    console.log(url);
                     return this._http.get(url, requestOptions)
-                        .map(function (res) { return res.json(); }); //console.log(res)); //
+                        .map(function (res) { return res.json(); }); //console.log(res)); //res.json()
                 };
                 RfidMonitorService.prototype.updateRfidMonitor = function (rfidMonitor) {
                     var headers = new http_2.Headers();

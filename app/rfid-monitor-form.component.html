@@ -1,4 +1,6 @@
 <div class="container">
+
+    <div>
         <h1>Assure</h1>
         <h2>RFID Monitor Maintenance</h2>
 
@@ -18,15 +20,12 @@
                 </div>
             </div>
         </form>
-
-            <br><br>
-
+    </div>
 
 
     <div [hidden]="!hospitalSelect">
-        <br>
 
-        <div *ngIf="selectedRfidMonitor && editMode">
+        <div *ngIf="selectedRfidMonitor && editMode != ''">
             <form (ngSubmit)="onSubmit()" #rfidMonitorForm="ngForm">
 
                 <div hidden><label>rfid_monitor_id: </label>{{selectedRfidMonitor.rfid_monitor_id}}</div>
@@ -36,19 +35,19 @@
                 <div *ngIf="editMode == 'update'"><h2>Edit existing RFID Monitor</h2></div>
 
                 <div class="items">
-                    <label class="badge" for="code" [hidden]="!hospitalSelect">Monitor Code</label>
-                    <input name="code"  [(ngModel)]="selectedRfidMonitor.rfid_monitor_code" placeholder="Monitor Code" [hidden]="!hospitalSelect" required>
+                    <label class="badge" for="monitorCode" >Monitor Code</label>
+                    <input name="monitorCode"  [(ngModel)]="selectedRfidMonitor.rfid_monitor_code" placeholder="Monitor Code"  required>
                 </div>
                 <div class="items">
                     <label class="badge" for="description" [hidden]="!hospitalSelect">Description</label>
-                    <input name="description"  [(ngModel)]="selectedRfidMonitor.description" placeholder="Description" [hidden]="!hospitalSelect" required>
+                    <input name="description"  [(ngModel)]="selectedRfidMonitor.description" placeholder="Description"  required>
                 </div>
 
                 <button type="submit" class="btn btn-default"
                         [disabled]="!rfidMonitorForm.form.valid">Save
                 </button>
                 <button class="btn btn-default"
-                        (click) = "onCancel()">Cancel
+                        (click) = "onCancelMonitorEdit()">Cancel
                 </button>
             </form>
         </div>

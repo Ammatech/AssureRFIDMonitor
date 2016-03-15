@@ -15,7 +15,7 @@ export class RfidMonitorFormComponent implements OnInit {
     hospitals = [];
 
     submitted = false;
-    //hospitalSelect = false;
+    hospitalSelect = false;
     editMode:string = '';
 
     selectedRfidMonitor: RfidMonitor;
@@ -62,6 +62,7 @@ export class RfidMonitorFormComponent implements OnInit {
                 error => console.log(error), //alert(error.toString()),
                 () => console.log('updateRFIDMonitor Finished')
             )
+        this._httpService(s)
     }
 
     onNewMonitor(entityId: number) {
@@ -76,7 +77,8 @@ export class RfidMonitorFormComponent implements OnInit {
 
     }
 
-    onCancel(){
+    onCancelMonitorEdit(){
+        //this.selectedRfidMonitor = new RfidMonitor(0,'','',0);
         this.editMode = '';
     }
 

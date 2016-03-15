@@ -25,10 +25,10 @@ export class RfidMonitorService {
         requestOptions.headers = headers;
 
         let url:string = this.urlRfidMonitorService + '/' + entityId;
-        //console.log(url);
+        console.log(url);
 
         return this._http.get(url, requestOptions)
-            .map(res => res.json()); //console.log(res)); //
+            .map(res => res.json()); //console.log(res)); //res.json()
 
     }
 
