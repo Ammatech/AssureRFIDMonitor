@@ -1,31 +1,6 @@
 <div class="container">
 
-    <div>
-        <h1>Assure</h1>
-        <h2>RFID Monitor Maintenance</h2>
-
-        <form #hospital="ngForm">
-
-            <div class="form-group">
-                <label for="hospital">Hospital</label>
-                <select class="form-control" required
-                        (change)="onGetRfidMonitor(hospital.value)"
-
-                        ngControl="hospital" #hospital="ngForm">
-                    <option *ngFor="#hospital of hospitals" [value]="hospital.entity_id">{{hospital.entity_code}}
-                    </option>
-                </select>
-                <div [hidden]="hospital.value" class="alert alert-danger">
-                    Please select a Hospital
-                </div>
-            </div>
-        </form>
-    </div>
-
-
-    <div [hidden]="!hospitalSelect">
-
-        <div *ngIf="selectedRfidMonitor && editMode != ''">
+        <div *ngIf="selectedRfidMonitor && editMode != 'no'">
             <form (ngSubmit)="onSubmit()" #rfidMonitorForm="ngForm">
 
                 <div hidden><label>rfid_monitor_id: </label>{{selectedRfidMonitor.rfid_monitor_id}}</div>
@@ -35,11 +10,11 @@
                 <div *ngIf="editMode == 'update'"><h2>Edit existing RFID Monitor</h2></div>
 
                 <div class="items">
-                    <label class="badge" for="monitorCode" >Monitor Code</label>
+                    <label class="badge">Monitor Code</label>
                     <input name="monitorCode"  [(ngModel)]="selectedRfidMonitor.rfid_monitor_code" placeholder="Monitor Code"  required>
                 </div>
                 <div class="items">
-                    <label class="badge" for="description" [hidden]="!hospitalSelect">Description</label>
+                    <label class="badge">Description</label>
                     <input name="description"  [(ngModel)]="selectedRfidMonitor.description" placeholder="Description"  required>
                 </div>
 
@@ -52,7 +27,7 @@
             </form>
         </div>
 
-        <h2>Existing RFID Monitors</h2><button (click) = "onNewMonitor(hospital.value)" name="newMonitor">Create New</button>
+        <h2>Existing RFID Monitors</h2><button (click) = "onNewMonitor()" name="newMonitor">Create New</button>
         <br>
 
         <ul class="items">
@@ -63,8 +38,6 @@
             </li>
         </ul>
 
-
-    </div>
 
 </div>
 

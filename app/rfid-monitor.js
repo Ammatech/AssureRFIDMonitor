@@ -1,4 +1,6 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var RfidMonitor;
     return {
         setters:[],
@@ -11,7 +13,7 @@ System.register([], function(exports_1) {
                     this.entity_id = entity_id;
                 }
                 return RfidMonitor;
-            })();
+            }());
             exports_1("RfidMonitor", RfidMonitor);
         }
     }

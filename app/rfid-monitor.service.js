@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "angular2/http"], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17,18 +19,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "ang
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+                http_2 = http_1_1;
+                http_3 = http_1_1;
             },
-            function (_1) {},
-            function (http_2_1) {
-                http_2 = http_2_1;
-                http_3 = http_2_1;
-            }],
+            function (_1) {}],
         execute: function() {
             RfidMonitorService = (function () {
                 function RfidMonitorService(_http) {
                     this._http = _http;
                     // TODO fix this hard code up
-                    this.urlEntityService = 'https://magellan.ammatech.com.au/rest/Assure_Dev/EntityService';
                     this.urlRfidMonitorService = 'https://magellan.ammatech.com.au/rest/Assure_Dev/RfidMonitorService';
                 }
                 RfidMonitorService.prototype.getRfidMonitor = function (entityId) {
@@ -52,20 +51,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', "ang
                     return this._http.post(this.urlRfidMonitorService, body, requestOptions)
                         .map(function (res) { return res.json(); }); //console.log(res)); //
                 };
-                RfidMonitorService.prototype.getHospital = function () {
-                    var headers = new http_2.Headers();
-                    headers.append('Accept', 'text/json');
-                    var requestOptions = new http_3.RequestOptions();
-                    requestOptions.headers = headers;
-                    return this._http.get(this.urlEntityService, requestOptions)
-                        .map(function (res) { return res.json(); }); //console.log(res)); //
-                };
                 RfidMonitorService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], RfidMonitorService);
                 return RfidMonitorService;
-            })();
+            }());
             exports_1("RfidMonitorService", RfidMonitorService);
         }
     }

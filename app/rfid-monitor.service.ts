@@ -13,7 +13,6 @@ export class RfidMonitorService {
     constructor (private _http: Http) {}
 
     // TODO fix this hard code up
-    private urlEntityService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/EntityService';
     private urlRfidMonitorService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/RfidMonitorService';
 
     getRfidMonitor(entityId:number){
@@ -50,19 +49,6 @@ export class RfidMonitorService {
 
     }
 
-    getHospital(){
-
-        let headers: Headers = new Headers();
-        headers.append('Accept', 'text/json');
-
-        let requestOptions: RequestOptions = new RequestOptions();
-        requestOptions.headers = headers;
-
-        return this._http.get(this.urlEntityService, requestOptions)
-            .map(res => res.json()); //console.log(res)); //
-
-    }
-
-}
+ }
 
 

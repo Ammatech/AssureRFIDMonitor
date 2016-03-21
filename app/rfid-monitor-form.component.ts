@@ -1,52 +1,54 @@
-import {Component} from 'angular2/core';
+import {Component,OnInit} from 'angular2/core';
 import {NgForm}    from 'angular2/common';
-import { RfidMonitor }    from './rfid-monitor';
+import {RouteParams, Router} from "angular2/router";
+
+import {RfidMonitor}    from './rfid-monitor';
 import {RfidMonitorService} from "./rfid-monitor.service";
-import {OnInit} from "angular2/core";
 
 @Component({
   selector: 'rfid-monitor-form',
   templateUrl: 'app/rfid-monitor-form.component.html',
-  providers: [RfidMonitorService]
+    inputs:['entityId']
 })
-export class RfidMonitorFormComponent implements OnInit {
+export class RfidMonitorFormComponent implements OnInit{
 
     rfidMonitors = [];
-    hospitals = [];
 
     submitted = false;
-    hospitalSelect = false;
-    editMode:string = '';
+    editMode:string = 'no';
 
     selectedRfidMonitor: RfidMonitor;
 
+    entityId:number; // =23;
+
+
+    constructor(private _router:Router,
+                private _routeParams: RouteParams,
+                private _httpService:RfidMonitorService) {
+
+    }
 
     ngOnInit() {
-        this.onGetHospital();
+        this.entityId = +this._routeParams.get('entityId');
+        this.onGetRfidMonitor();
     }
 
-    constructor(private _httpService:RfidMonitorService) {
-
+    goBack() {
+        window.history.back();
     }
 
-    onGetRfidMonitor(entityId: number) {
 
-        console.log('entityId is ' + entityId.toString());
-        this.hospitalSelect = true;
-        this._httpService.getRfidMonitor(entityId)
+    onGetRfidMonitor() {
+
+        console.log('entityId is ' + this.entityId.toString());
+        this._httpService.getRfidMonitor(this.entityId)
             .subscribe(
-                data => this.rfidMonitors = data, //JSON.stringify(data),
+                data => {this.rfidMonitors = data;
+                    console.log('getRFIDMonitor data');
+                    //JSON.stringify(data)
+                    },
                 error => console.log(error), //alert(error.toString()),
                 () => console.log('getRFIDMonitor Finished')
-            )
-    }
-
-    onGetHospital() {
-        this._httpService.getHospital()
-            .subscribe(
-                data => this.hospitals = data, //JSON.stringify(data),
-                error => console.log(error), //alert(error.toString()),
-                () => console.log('getHospital Finished')
             )
     }
 
@@ -58,15 +60,14 @@ export class RfidMonitorFormComponent implements OnInit {
             .subscribe(
                 data => {
                     this.editMode = '';
-                    this.onGetRfidMonitor(this.selectedRfidMonitor.entity_id)}, //JSON.stringify(data),
+                    this.onGetRfidMonitor()}, //JSON.stringify(data),
                 error => console.log(error), //alert(error.toString()),
                 () => console.log('updateRFIDMonitor Finished')
             )
-        this._httpService(s)
     }
 
-    onNewMonitor(entityId: number) {
-            this.selectedRfidMonitor = new RfidMonitor(0,'','',entityId);
+    onNewMonitor() {
+            this.selectedRfidMonitor = new RfidMonitor(0,'','',this.entityId);
             this.editMode = 'insert';
 
     }
@@ -79,7 +80,7 @@ export class RfidMonitorFormComponent implements OnInit {
 
     onCancelMonitorEdit(){
         //this.selectedRfidMonitor = new RfidMonitor(0,'','',0);
-        this.editMode = '';
+        this.editMode = 'no';
     }
 
 }

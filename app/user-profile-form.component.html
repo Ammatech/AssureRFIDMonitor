@@ -1,0 +1,45 @@
+<div class="container">
+
+        <div *ngIf="selectedUserProfile && editMode != ''">
+            <form (ngSubmit)="onSubmit()" #UserProfileForm="ngForm">
+
+                <div hidden><label>rfid_monitor_id: </label>{{selectedUserProfile.rfid_monitor_id}}</div>
+                <div hidden><label>entity id: </label>{{selectedUserProfile.entity_id}}</div>
+
+                <div *ngIf="editMode == 'insert'"><h2>Create new User Profile</h2></div>
+                <div *ngIf="editMode == 'update'"><h2>Edit existing User Profile</h2></div>
+
+                <div class="items">
+                    <label class="badge" >First Name</label>
+                    <input name="firstName"  [(ngModel)]="selectedUserProfile.first_name" placeholder="First Name"  required>
+                </div>
+                <div class="items">
+                    <label class="badge">Last Name</label>
+                    <input name="lastName"  [(ngModel)]="selectedUserProfile.last_name" placeholder="Last Name"  required>
+                </div>
+                <div class="items">
+                    <label class="badge">Last Name</label>
+                    <input name="email"  [(ngModel)]="selectedUserProfile.email" placeholder="Email"  required>
+                </div>
+
+                <button type="submit" class="btn btn-default"
+                        [disabled]="!UserProfileForm.form.valid">Save
+                </button>
+                <button class="btn btn-default"
+                        (click) = "onCancelUserProfileEdit()">Cancel
+                </button>
+            </form>
+        </div>
+
+        <h2>Existing User Profiles</h2><button (click) = "onNewUserProfile()" name="newUser">Create New</button>
+        <br>
+
+        <ul class="items">
+            <li *ngFor="#UserProfile of UserProfiles"
+                [class.selected]="UserProfile === selectedUserProfile"
+                (click)="onSelect(UserProfile)">
+                <span class="badge" >{{UserProfile.email}}</span> {{UserProfile.first_name}}
+            </li>
+        </ul>
+</div>
+
