@@ -14,7 +14,7 @@ component restpath='UserProfileService' rest='true'
     {
 
         result =  new StoredProc(
-            procedure        = "p_get_user_profile",
+            procedure        = "p_search_entity_user",
             datasource        = "SVP_PJMAssure_Development",
             parameters        = [{dbvarname="@entity_id", value=entityId, cfsqltype="CF_SQL_INTEGER"}],
             procResults        = [{resultset=1, name="resultUserProfile"}]).execute();
@@ -36,8 +36,8 @@ component restpath='UserProfileService' rest='true'
             result =  new StoredProc(
                 procedure        = "p_insert_user_profile",
                 datasource        = "SVP_PJMAssure_Development",
-                parameters        = [{dbvarname="@user_status_id", value=user_status_id, cfsqltype="CF_SQL_INTEGER"}],
-                                     {dbvarname="@user_type_id", value=user_type_id, cfsqltype="CF_SQL_INTEGER"}],
+                parameters        = [{dbvarname="@user_status_id", value=user_status_id, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@user_type_id", value=user_type_id, cfsqltype="CF_SQL_INTEGER"},
                                      {dbvarname="@first_name", value=first_name, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@last_name", value=last_name, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@phone", value=phone, cfsqltype="CF_SQL_VARCHAR"},
@@ -58,8 +58,8 @@ component restpath='UserProfileService' rest='true'
                 procedure        = "p_update_user_profile",
                 datasource        = "SVP_PJMAssure_Development",
                 parameters        = [{dbvarname="@user_profile_id", value=user_profile_id, cfsqltype="CF_SQL_INTEGER"},
-                                     {dbvarname="@user_status_id", value=user_status_id, cfsqltype="CF_SQL_INTEGER"}],
-                                     {dbvarname="@user_type_id", value=user_type_id, cfsqltype="CF_SQL_INTEGER"}],
+                                     {dbvarname="@user_status_id", value=user_status_id, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@user_type_id", value=user_type_id, cfsqltype="CF_SQL_INTEGER"},
                                      {dbvarname="@first_name", value=first_name, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@last_name", value=last_name, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@phone", value=phone, cfsqltype="CF_SQL_VARCHAR"},
