@@ -41,7 +41,7 @@ export class UserProfileFormComponent implements OnInit{
 
     onGetUserProfile() {
 
-        this._httpService.getUserProfile(this.entityId)
+        this._httpService.getUserProfile(this.entityId, 0)
             .subscribe(
                 data => this.UserProfiles = data, //JSON.stringify(data),
                 error => console.log(error), //alert(error.toString()),
@@ -70,12 +70,19 @@ export class UserProfileFormComponent implements OnInit{
     }
 
     onSelect(UserProfile: UserProfile) {
-        this.selectedUserProfile = UserProfile;
+        this._httpService.getUserProfile(this.entityId, UserProfile.user_profile_id)
+            .subscribe(
+                data => {this.selectedUserProfile = data[0],
+                    console.log('onSelect = ' + JSON.stringify(data))},
+                error => console.log(error), //alert(error.toString()),
+                () => console.log('onSelect Finished')
+            )
+        //this.selectedUserProfile = UserProfile;
         // TODO Temp - search does not get password etc
-        this.selectedUserProfile.password = '';
-        this.selectedUserProfile.is_send_booking_email = false;
-        this.selectedUserProfile.insert_user_id = 1;
-        this.selectedUserProfile.update_user_id = 1;
+        //this.selectedUserProfile.password = '';
+        //this.selectedUserProfile.is_send_booking_email = false;
+        //this.selectedUserProfile.insert_user_id = 1;
+        //this.selectedUserProfile.update_user_id = 1;
         this.editMode = 'update';
 
     }

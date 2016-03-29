@@ -15,7 +15,7 @@ export class UserProfileService {
     // TODO fix this hard code up
     private urlUserProfileService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/UserProfileService';
 
-    getUserProfile(entityId:number){
+    getUserProfile(entityId:number, userProfileId:number){
 
         let headers: Headers = new Headers();
         headers.append('Accept', 'text/json');
@@ -23,7 +23,7 @@ export class UserProfileService {
         let requestOptions: RequestOptions = new RequestOptions();
         requestOptions.headers = headers;
 
-        let url:string = this.urlUserProfileService + '/' + entityId;
+        let url:string = this.urlUserProfileService + '/searchParams?entityId=' + entityId + '&userProfileId=' + userProfileId;
         console.log(url);
 
         return this._http.get(url, requestOptions)
