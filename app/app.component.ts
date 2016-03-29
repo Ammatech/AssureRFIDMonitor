@@ -12,12 +12,7 @@ import {UserProfileService} from "./user-profile.service";
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
   directives: [ROUTER_DIRECTIVES],
-  providers: [
-    ROUTER_PROVIDERS,
-      AdministrationService,
-    RfidMonitorService,
-      UserProfileService
-  ]
+  providers: [ROUTER_PROVIDERS,AdministrationService]
 })
 @RouteConfig([
   {

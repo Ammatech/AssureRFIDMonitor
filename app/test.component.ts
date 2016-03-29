@@ -13,6 +13,7 @@ import {Component} from 'angular2/core'
     directives: []
 })
 export class App {
+    name:string;
     constructor() {
         this.name = 'Angular2'
     }

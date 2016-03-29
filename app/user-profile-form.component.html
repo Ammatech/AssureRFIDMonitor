@@ -1,6 +1,6 @@
 <div class="container">
 
-        <div *ngIf="selectedUserProfile && editMode != ''">
+        <div *ngIf="selectedUserProfile && editMode != 'no'">
             <form (ngSubmit)="onSubmit()" #UserProfileForm="ngForm">
 
                 <div hidden><label>rfid_monitor_id: </label>{{selectedUserProfile.rfid_monitor_id}}</div>
@@ -20,6 +20,11 @@
                 <div class="items">
                     <label class="badge">Last Name</label>
                     <input name="email"  [(ngModel)]="selectedUserProfile.email" placeholder="Email"  required>
+                </div>
+
+                <div class="items">
+                    <label class="badge">Send Booking email</label>
+                    <input name="sendEmail" type="checkbox"  [(ngModel)]="selectedUserProfile.is_send_booking_email">
                 </div>
 
                 <button type="submit" class="btn btn-default"

@@ -14,6 +14,7 @@ export class UserProfile {
     public password: string,
     public is_send_booking_email: boolean,
     public insert_user_id: number,
+    public update_user_id: number,
     public entity_id: number,
     public user_group_id: number
 

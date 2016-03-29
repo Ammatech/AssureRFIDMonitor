@@ -83,7 +83,7 @@ System.register(['angular2/core', "angular2/router", './rfid-monitor', "./rfid-m
                     core_1.Component({
                         selector: 'rfid-monitor-form',
                         templateUrl: 'app/rfid-monitor-form.component.html',
-                        inputs: ['entityId']
+                        providers: [rfid_monitor_service_1.RfidMonitorService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, rfid_monitor_service_1.RfidMonitorService])
                 ], RfidMonitorFormComponent);

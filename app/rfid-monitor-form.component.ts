@@ -7,8 +7,8 @@ import {RfidMonitorService} from "./rfid-monitor.service";
 
 @Component({
   selector: 'rfid-monitor-form',
-  templateUrl: 'app/rfid-monitor-form.component.html',
-    inputs:['entityId']
+  templateUrl: 'app/rfid-monitor-form.component.html', 
+  providers: [RfidMonitorService]
 })
 export class RfidMonitorFormComponent implements OnInit{
 
