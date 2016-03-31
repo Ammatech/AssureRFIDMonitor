@@ -72,8 +72,15 @@ export class UserProfileFormComponent implements OnInit{
     onSelect(UserProfile: UserProfile) {
         this._httpService.getUserProfile(this.entityId, UserProfile.user_profile_id)
             .subscribe(
-                data => {this.selectedUserProfile = data[0],
-                    console.log('onSelect = ' + JSON.stringify(data))},
+                data => {
+                    this.selectedUserProfile = data[0];
+                    this.selectedUserProfile.insert_user_id = 1;
+                    this.selectedUserProfile.update_user_id = 1;
+                    this.selectedUserProfile.entity_id = this.entityId;
+                    this.selectedUserProfile.user_group_id = 2;
+                    this.editMode = 'update';
+                    console.log('onSelect = ' + JSON.stringify(data));
+                },
                 error => console.log(error), //alert(error.toString()),
                 () => console.log('onSelect Finished')
             )
@@ -83,7 +90,7 @@ export class UserProfileFormComponent implements OnInit{
         //this.selectedUserProfile.is_send_booking_email = false;
         //this.selectedUserProfile.insert_user_id = 1;
         //this.selectedUserProfile.update_user_id = 1;
-        this.editMode = 'update';
+        //this.editMode = 'update';
 
     }
 

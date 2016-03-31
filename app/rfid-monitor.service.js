@@ -28,7 +28,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 function RfidMonitorService(_http) {
                     this._http = _http;
                     // TODO fix this hard code up
-                    this.urlRfidMonitorService = 'https://magellan.ammatech.com.au/rest/Assure_Dev/RfidMonitorService';
+                    this.urlRfidMonitorService = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/RfidMonitorService';
                 }
                 RfidMonitorService.prototype.getRfidMonitor = function (entityId) {
                     var headers = new http_2.Headers();

@@ -12,7 +12,7 @@ export class AdministrationService {
     constructor (private _http: Http) {}
 
     // TODO fix this hard code up
-    private urlEntityService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/EntityService';
+    private urlEntityService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/EntityService';
 
     getEntity(){
 
@@ -23,7 +23,7 @@ export class AdministrationService {
         requestOptions.headers = headers;
 
         return this._http.get(this.urlEntityService, requestOptions)
-            .map(res => res.json()); //console.log(res)); //
+            .map(res => res.json());
 
     }
 

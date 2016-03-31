@@ -3,31 +3,8 @@
 component restpath='UserProfileService' rest='true'
 {
 
-    cfinclude (template = './QueryToArray.cfm');
-
-    // TODO - These header may not be need when run from the server rather than localhost on PC calling the server's webservices
-
-    pc = getPageContext().getResponse();
-    pc.setHeader( 'Access-Control-Allow-Origin', '*' );
-    pc.setHeader( 'Access-Control-Allow-Methods', 'POST,OPTIONS,HEAD,GET,PUT' );
-    pc.setHeader( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
-
-    // TODO - Define the datasource in a higher level include
-
-    dataSource = "SVP_PJMAssure_Development";
-
-    //remote function searchUserProfile(required numeric entityId restargsource='Path') httpmethod='get' returnType='array' returnFormat='json' restpath='{entityId}'
-    //{
-
-    //    result =  new StoredProc(
-    //        procedure        = "p_search_entity_user",
-    //        datasource        = dataSource,
-    //        parameters        = [{dbvarname="@entity_id", value=entityId, cfsqltype="CF_SQL_INTEGER"}],
-    //        procResults        = [{resultset=1, name="resultUserProfile"}]).execute();
-
-    //    return queryToArray(result.getProcResultSets().resultUserProfile);
-
-    //}
+    cfinclude (template = '../setting.cfm');
+    cfinclude (template = '../include/QueryToArray.cfm');
 
     remote function getUserProfile(required numeric userProfileId restargsource='Query',
                                    required numeric entityId      restargsource='Query')

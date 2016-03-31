@@ -13,7 +13,7 @@ export class UserProfileService {
     constructor (private _http: Http) {}
 
     // TODO fix this hard code up
-    private urlUserProfileService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/UserProfileService';
+    private urlUserProfileService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/UserProfileService';
 
     getUserProfile(entityId:number, userProfileId:number){
 

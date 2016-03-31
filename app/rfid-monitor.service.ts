@@ -13,7 +13,7 @@ export class RfidMonitorService {
     constructor (private _http: Http) {}
 
     // TODO fix this hard code up
-    private urlRfidMonitorService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev/RfidMonitorService';
+    private urlRfidMonitorService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/RfidMonitorService';
 
     getRfidMonitor(entityId:number){
 

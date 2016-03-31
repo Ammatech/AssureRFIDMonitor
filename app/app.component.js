@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.component', "./user-profile-form.component", "./administration.service"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.component', "./user-profile-form.component", "./administration.service", "./utility.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, rfid_monitor_form_component_1, user_profile_form_component_1, administration_service_1;
+    var core_1, router_1, rfid_monitor_form_component_1, user_profile_form_component_1, administration_service_1, utility_service_1;
     var AppComponent;
     return {
         setters:[
@@ -28,28 +28,44 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
             },
             function (administration_service_1_1) {
                 administration_service_1 = administration_service_1_1;
+            },
+            function (utility_service_1_1) {
+                utility_service_1 = utility_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_router, _httpService) {
+                function AppComponent(_router, _http, _httpUtilityService) {
                     this._router = _router;
-                    this._httpService = _httpService;
+                    this._http = _http;
+                    this._httpUtilityService = _httpUtilityService;
                     this.entitys = [];
                     this.entitySelect = false;
                     this.title = 'Next Gen Assure';
+                    this.userTypes = [];
+                    this.userStatuses = [];
                 }
                 AppComponent.prototype.ngOnInit = function () {
                     console.log('AppComponent - ngOnInit called');
                     this.onGetEntity();
+                    //this.onGetUserType();
                 };
                 AppComponent.prototype.onGetEntity = function () {
                     var _this = this;
-                    this._httpService.getEntity()
-                        .subscribe(function (data) { return _this.entitys = data; }, //JSON.stringify(data),
-                    function (//JSON.stringify(data),
-                        error) { return console.log(error); }, //alert(error.toString()),
+                    this._http.getEntity()
+                        .subscribe(function (data) { return _this.entitys = data; }, function (error) { return console.log(error); }, //alert(error.toString()),
                     function () { return console.log('getEntity Finished'); });
                 };
+                //onGetUserType() {
+                //    this._httpUtilityService.getUserType()
+                //        .subscribe(
+                ///            data => {
+                //               this.userTypes   = data;
+                //                console.log('onGetUserType = ' + JSON.stringify(data) );
+                //            },
+                //            error => console.log(error), //alert(error.toString()),
+                //            () => console.log('onGetUserType Finished')
+                //        )
+                //}
                 AppComponent.prototype.onSelectEntity = function (entityId) {
                     console.log('onSelectEntity Called');
                     this.entitySelect = true;
@@ -60,7 +76,7 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
                         selector: 'my-app',
                         templateUrl: 'app/app.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS, administration_service_1.AdministrationService]
+                        providers: [router_1.ROUTER_PROVIDERS, administration_service_1.AdministrationService, utility_service_1.UtilityService]
                     }),
                     router_1.RouteConfig([
                         {
@@ -74,7 +90,7 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
                             component: user_profile_form_component_1.UserProfileFormComponent
                         },
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Router, administration_service_1.AdministrationService])
+                    __metadata('design:paramtypes', [router_1.Router, administration_service_1.AdministrationService, utility_service_1.UtilityService])
                 ], AppComponent);
                 return AppComponent;
             }());
