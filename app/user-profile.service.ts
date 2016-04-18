@@ -2,18 +2,14 @@
  * Created by Tony Sykes on 25-Jan-2016.
  */
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Http, Headers, RequestOptions} from 'angular2/http';
 import 'rxjs/add/operator/map';
-import {Headers} from "angular2/http";
-import {RequestOptions} from "angular2/http";
 import {UserProfile} from "./user-profile";
+import {API_USER_PROFILE_URL} from "./app.config";
 
 @Injectable()
 export class UserProfileService {
     constructor (private _http: Http) {}
-
-    // TODO fix this hard code up
-    private urlUserProfileService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/UserProfileService';
 
     getUserProfile(entityId:number, userProfileId:number){
 
@@ -23,7 +19,8 @@ export class UserProfileService {
         let requestOptions: RequestOptions = new RequestOptions();
         requestOptions.headers = headers;
 
-        let url:string = this.urlUserProfileService + '/searchParams?entityId=' + entityId + '&userProfileId=' + userProfileId;
+        let url:string = `${API_USER_PROFILE_URL}/searchParams?entityId=${entityId}&userProfileId=${userProfileId}`;
+        //let url:string = this.urlUserProfileService + '/searchParams?entityId=' + entityId + '&userProfileId=' + userProfileId;
         console.log(url);
 
         return this._http.get(url, requestOptions)
@@ -44,7 +41,7 @@ export class UserProfileService {
 
         //console.log(body);
 
-        return this._http.post(this.urlUserProfileService, body, requestOptions)
+        return this._http.post(API_USER_PROFILE_URL, body, requestOptions)
             .map(res => res.json()); //console.log(res)); //
 
     }

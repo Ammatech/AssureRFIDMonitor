@@ -2,18 +2,14 @@
  * Created by Tony Sykes on 25-Jan-2016.
  */
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Http, Headers, RequestOptions } from 'angular2/http';
 import 'rxjs/add/operator/map';
-import {Headers} from "angular2/http";
-import {RequestOptions} from "angular2/http";
 import {RfidMonitor} from "./rfid-monitor";
+import {API_BASE_URL, API_RFID_MONITOR_URL} from "./app.config";
 
 @Injectable()
 export class RfidMonitorService {
     constructor (private _http: Http) {}
-
-    // TODO fix this hard code up
-    private urlRfidMonitorService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Service/RfidMonitorService';
 
     getRfidMonitor(entityId:number){
 
@@ -23,7 +19,7 @@ export class RfidMonitorService {
         let requestOptions: RequestOptions = new RequestOptions();
         requestOptions.headers = headers;
 
-        let url:string = this.urlRfidMonitorService + '/' + entityId;
+        let url:string = `${API_RFID_MONITOR_URL}/${entityId}`;
         console.log(url);
 
         return this._http.get(url, requestOptions)
@@ -44,7 +40,7 @@ export class RfidMonitorService {
 
         //console.log(body);
 
-        return this._http.post(this.urlRfidMonitorService, body, requestOptions)
+        return this._http.post(API_RFID_MONITOR_URL, body, requestOptions)
             .map(res => res.json()); //console.log(res)); //
 
     }
