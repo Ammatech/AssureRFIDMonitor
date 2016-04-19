@@ -27,6 +27,7 @@
     <div [hidden]="!entitySelect">
         <nav>
             <a [routerLink]="['RfidMonitor',{entityId: entityId}]">RFID Monitor</a>
+            <a [routerLink]="['RfidReader',{entityId: entityId}]">RFID Reader</a>
             <a [routerLink]="['UserProfile',{entityId: entityId}]">User Profile</a>
         </nav>
         <router-outlet></router-outlet>

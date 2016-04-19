@@ -2,6 +2,7 @@ import {Component, OnInit}         from 'angular2/core';
 import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 import {RfidMonitorFormComponent} from './rfid-monitor-form.component';
+import {RfidReaderFormComponent} from './rfid-reader-form.component';
 import {UserProfileFormComponent} from "./user-profile-form.component";
 
 import {AdministrationService} from "./administration.service";
@@ -20,6 +21,11 @@ import {UtilityService} from "./utility.service";
         path: '/rfidmonitor',
         name: 'RfidMonitor',
         component: RfidMonitorFormComponent
+    },
+    {
+        path: '/rfidreader',
+        name: 'RfidReader',
+        component: RfidReaderFormComponent
     },
     {
         path: '/userprofile',

@@ -7,13 +7,24 @@ import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
+import {API_RFID_READER_TYPE_URL, API_USER_TYPE_URL, API_USER_STATUS_URL} from "./app.config";
 
 @Injectable()
 export class UtilityService {
     constructor (private _http: Http) {}
 
-    // TODO fix this hard code up
-    private urlUtilityService:string = 'https://magellan.ammatech.com.au/rest/Assure_Dev_Utility/';
+    getRfidReaderType(){
+
+        let headers: Headers = new Headers();
+        headers.append('Accept', 'text/json');
+
+        let requestOptions: RequestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this._http.get(API_RFID_READER_TYPE_URL, requestOptions)
+            .map(res => res.json());
+
+    }
 
     getUserType(){
 
@@ -23,7 +34,7 @@ export class UtilityService {
         let requestOptions: RequestOptions = new RequestOptions();
         requestOptions.headers = headers;
 
-        return this._http.get(this.urlUtilityService + 'getUserType', requestOptions)
+        return this._http.get(API_USER_TYPE_URL, requestOptions)
             .map(res => res.json());
 
     }
@@ -36,7 +47,7 @@ export class UtilityService {
         let requestOptions: RequestOptions = new RequestOptions();
         requestOptions.headers = headers;
 
-        return this._http.get(this.urlUtilityService + 'getUserStatus', requestOptions)
+        return this._http.get(API_USER_STATUS_URL, requestOptions)
             .map(res => res.json());
 
     }

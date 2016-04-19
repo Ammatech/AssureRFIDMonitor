@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.component', "./user-profile-form.component", "./administration.service", "./utility.service"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.component', './rfid-reader-form.component', "./user-profile-form.component", "./administration.service", "./utility.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, rfid_monitor_form_component_1, user_profile_form_component_1, administration_service_1, utility_service_1;
+    var core_1, router_1, rfid_monitor_form_component_1, rfid_reader_form_component_1, user_profile_form_component_1, administration_service_1, utility_service_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
             },
             function (rfid_monitor_form_component_1_1) {
                 rfid_monitor_form_component_1 = rfid_monitor_form_component_1_1;
+            },
+            function (rfid_reader_form_component_1_1) {
+                rfid_reader_form_component_1 = rfid_reader_form_component_1_1;
             },
             function (user_profile_form_component_1_1) {
                 user_profile_form_component_1 = user_profile_form_component_1_1;
@@ -83,6 +86,11 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
                             path: '/rfidmonitor',
                             name: 'RfidMonitor',
                             component: rfid_monitor_form_component_1.RfidMonitorFormComponent
+                        },
+                        {
+                            path: '/rfidreader',
+                            name: 'RfidReader',
+                            component: rfid_reader_form_component_1.RfidReaderFormComponent
                         },
                         {
                             path: '/userprofile',
