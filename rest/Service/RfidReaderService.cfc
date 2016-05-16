@@ -44,8 +44,8 @@ component restpath='RfidReaderService' rest='true'
                                      {dbvarname="@reader_data_version", value=reader_data_version, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@reader_model", value=reader_model, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@reader_version", value=reader_version, cfsqltype="CF_SQL_VARCHAR"},
-                                     {dbvarname="@rfid_monitor_id", value=rfid_monitor_id, cfsqltype="CF_SQL_INTEGER"}
-                                     {dbvarname="@entity_id", value=entity_id, cfsqltype="CF_SQL_INTEGER"}
+                                     {dbvarname="@rfid_monitor_id", value=rfid_monitor_id, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@entity_id", value=entity_id, cfsqltype="CF_SQL_INTEGER"},
                                      {dbvarname="@insert_user_id", value=insert_user_id, cfsqltype="CF_SQL_INTEGER"}
                                      ],
                 procResults        = [{resultset=1, name="resultRfidReader"}]).execute();
@@ -68,8 +68,8 @@ component restpath='RfidReaderService' rest='true'
                                      {dbvarname="@reader_data_version", value=reader_data_version, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@reader_model", value=reader_model, cfsqltype="CF_SQL_VARCHAR"},
                                      {dbvarname="@reader_version", value=reader_version, cfsqltype="CF_SQL_VARCHAR"},
-                                     {dbvarname="@rfid_monitor_id", value=rfid_monitor_id, cfsqltype="CF_SQL_INTEGER"}
-                                     {dbvarname="@entity_id", value=entity_id, cfsqltype="CF_SQL_INTEGER"}
+                                     {dbvarname="@rfid_monitor_id", value=rfid_monitor_id, cfsqltype="CF_SQL_INTEGER"},
+                                     {dbvarname="@entity_id", value=entity_id, cfsqltype="CF_SQL_INTEGER"},
                                      {dbvarname="@insert_user_id", value=insert_user_id, cfsqltype="CF_SQL_INTEGER"}
                                      ],
                 procResults        = [{resultset=1, name="resultRfidReader"}]).execute();

@@ -31,7 +31,7 @@
         <br>
 
         <ul class="items">
-            <li *ngFor="#rfidMonitor of rfidMonitors"
+            <li *ngFor="let rfidMonitor of rfidMonitors"
                 [class.selected]="rfidMonitor === selectedRfidMonitor"
                 (click)="onSelect(rfidMonitor)">
                 <span class="badge" >{{rfidMonitor.rfid_monitor_code}}</span> {{rfidMonitor.description}}

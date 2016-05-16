@@ -11,7 +11,7 @@
                         (change)="onSelectEntity(entity.value)"
 
                         ngControl="entity" #entity="ngForm">
-                    <option *ngFor="#entity of entitys" [value]="entity.entity_id">{{entity.entity_code}}
+                    <option *ngFor="let entity of entitys" [value]="entity.entity_id">{{entity.entity_code}}
                     </option>
                 </select>
                 <div [hidden]="entity.value" class="alert alert-danger">

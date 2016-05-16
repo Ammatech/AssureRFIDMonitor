@@ -1,8 +1,8 @@
 /**
  * Created by Tony Sykes on 25-Jan-2016.
  */
-import {Injectable} from 'angular2/core';
-import {Http, Headers, RequestOptions} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {UserProfile} from "./user-profile";
 import {API_USER_PROFILE_URL} from "./app.config";

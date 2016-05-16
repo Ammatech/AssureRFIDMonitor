@@ -1,8 +1,8 @@
 /**
  * Created by Tony Sykes on 25-Jan-2016.
  */
-import {Injectable} from 'angular2/core';
-import {Http, Headers, RequestOptions } from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {API_BASE_URL, API_RFID_MONITOR_URL, API_RFID_READER_URL} from "./app.config";
 import {RfidReader} from "./rfid-reader";

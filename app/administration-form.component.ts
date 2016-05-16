@@ -1,9 +1,8 @@
-import {Component} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {Component} from '@angular/core';
 import {AdministrationService} from "./administration.service";
-import {OnInit} from "angular2/core";
+import {OnInit} from "@angular/core";
 import {RfidMonitorFormComponent} from "./rfid-monitor-form.component";
-import {Router} from "angular2/router";
+import {Router} from "@angular/router-deprecated";
 
 @Component({
   selector: 'administration-form',

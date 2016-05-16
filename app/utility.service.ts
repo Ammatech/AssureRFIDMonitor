@@ -1,12 +1,12 @@
-///<reference path="../node_modules/angular2/src/http/http.d.ts"/>
+///<reference path="../node_modules/@angular/src/http/http.d.ts"/>
 /**
  * Created by Tony Sykes on 30-Mar-2016.
  */
-import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Headers} from "angular2/http";
-import {RequestOptions} from "angular2/http";
+import {Headers} from "@angular/http";
+import {RequestOptions} from "@angular/http";
 import {API_RFID_READER_TYPE_URL, API_USER_TYPE_URL, API_USER_STATUS_URL} from "./app.config";
 
 @Injectable()

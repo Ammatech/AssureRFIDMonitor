@@ -1,6 +1,6 @@
-import {Component,OnInit} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
-import {RouteParams, Router} from "angular2/router";
+import {Component,OnInit} from '@angular/core';
+import {NgForm}    from '@angular/common';
+import {RouteParams, Router} from "@angular/router-deprecated";
 
 import {RfidReader}    from './rfid-reader';
 import {RfidReaderService} from "./rfid-reader.service";

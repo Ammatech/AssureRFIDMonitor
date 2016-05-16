@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.component', './rfid-reader-form.component', "./user-profile-form.component", "./administration.service", "./utility.service"], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './rfid-monitor-form.component', './rfid-reader-form.component', "./user-profile-form.component", "./administration.service", "./utility.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, rfid_monitor_form_component_1, rfid_reader_form_component_1, user_profile_form_component_1, administration_service_1, utility_service_1;
+    var core_1, router_deprecated_1, rfid_monitor_form_component_1, rfid_reader_form_component_1, user_profile_form_component_1, administration_service_1, utility_service_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             },
             function (rfid_monitor_form_component_1_1) {
                 rfid_monitor_form_component_1 = rfid_monitor_form_component_1_1;
@@ -78,10 +78,10 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/app.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS, administration_service_1.AdministrationService, utility_service_1.UtilityService]
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+                        providers: [router_deprecated_1.ROUTER_PROVIDERS, administration_service_1.AdministrationService, utility_service_1.UtilityService]
                     }),
-                    router_1.RouteConfig([
+                    router_deprecated_1.RouteConfig([
                         {
                             path: '/rfidmonitor',
                             name: 'RfidMonitor',
@@ -98,7 +98,7 @@ System.register(['angular2/core', 'angular2/router', './rfid-monitor-form.compon
                             component: user_profile_form_component_1.UserProfileFormComponent
                         },
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Router, administration_service_1.AdministrationService, utility_service_1.UtilityService])
+                    __metadata('design:paramtypes', [router_deprecated_1.Router, administration_service_1.AdministrationService, utility_service_1.UtilityService])
                 ], AppComponent);
                 return AppComponent;
             }());

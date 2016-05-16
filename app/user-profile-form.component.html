@@ -44,7 +44,7 @@
         <br>
 
         <ul class="items">
-            <li *ngFor="#UserProfile of UserProfiles"
+            <li *ngFor="let UserProfile of UserProfiles"
                 [class.selected]="UserProfile === selectedUserProfile"
                 (click)="onSelect(UserProfile)">
                 <div class="items">

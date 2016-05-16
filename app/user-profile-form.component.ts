@@ -1,9 +1,9 @@
-import {Component} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {Component} from '@angular/core';
+import {NgForm}    from '@angular/common';
 import { UserProfile }    from './user-profile';
 import {UserProfileService} from "./user-profile.service";
-import {OnInit} from "angular2/core";
-import {Router, RouteParams} from "angular2/router";
+import {OnInit} from "@angular/core";
+import {Router, RouteParams} from "@angular/router-deprecated";
 
 @Component({
   selector: 'user-profile-form',
